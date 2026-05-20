@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0e0e0e;--s:#141414;--b:#1e1e1e;
+  --t:#d8d8d4;--m:#8a8a84;--d:#555550;
+  --g:#4dbe82;--r:#e06060;
+  --f:'DM Mono',monospace;
+}
+html{background:var(--bg);color:var(--t);font-family:var(--f);font-size:12px;line-height:1.6}
+body{padding:10px;max-width:640px}
+
+.pages{display:flex;gap:0;border-bottom:1px solid var(--b);margin-bottom:14px}
+.pg{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--d);
+    background:none;border:none;border-bottom:1px solid transparent;
+    padding:6px 16px 6px 0;cursor:pointer;margin-bottom:-1px;transition:color .15s,border-color .15s}
+.pg.active{color:var(--g);border-bottom-color:var(--g)}
+.pg:hover:not(.active){color:var(--m)}
+
+.page{display:none}
+.page.active{display:block}
+
+.acc{border-top:1px solid var(--b)}
+.acc:last-child{border-bottom:1px solid var(--b)}
+.acc-head{
+  display:flex;justify-content:space-between;align-items:center;
+  width:100%;background:none;border:none;cursor:pointer;
+  padding:8px 0;text-align:left;
+  font-family:var(--f);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--m);transition:color .15s;
+}
+.acc-head:hover,.acc-head.open{color:var(--t)}
+.arr{font-size:9px;color:var(--d);transition:transform .2s;flex-shrink:0}
+.acc-head.open .arr{transform:rotate(90deg)}
+.acc-body{display:none;padding-bottom:10px}
+.acc-body.open{display:block}
+
+ol,ul{padding-left:0;list-style:none}
+li{display:flex;gap:8px;padding:3px 0;border-bottom:1px solid #181818;color:var(--t)}
+li:last-child{border-bottom:none}
+.n{color:var(--d);min-width:14px;text-align:right;flex-shrink:0}
+.no{color:var(--d);min-width:6px;flex-shrink:0}
+
+.targets{display:grid;grid-template-columns:1fr 1fr;gap:3px 20px;margin-top:2px}
+.trow{display:flex;justify-content:space-between;padding:2px 0;border-bottom:1px solid #181818}
+.tk{color:var(--m)}.tv{color:var(--g)}
+.note{font-size:11px;font-style:italic;color:var(--d);margin-top:6px}
+
+.buses{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:2px;border:1px solid var(--b)}
+.bc{background:var(--s);padding:6px 8px}
+.bh{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--d);margin-bottom:4px}
+.brow{display:flex;justify-content:space-between;margin-bottom:2px}
+.bk{color:var(--m)}.bv{color:var(--t)}
+.bv.g{color:var(--g)}.bv.r{color:var(--r)}
+
+.clip-rules{margin-top:2px}
+.cr{display:flex;gap:8px;padding:3px 0;border-bottom:1px solid #181818}
+.cr:last-child{border-bottom:none}
+.cr-c{color:var(--m);min-width:150px}.cr-a{color:var(--t)}
+
+.chain{width:100%;border-collapse:collapse;margin-top:2px}
+.chain tr{border-bottom:1px solid #181818}
+.chain tr:last-child{border-bottom:none}
+.chain td{padding:3px 5px;vertical-align:top}
+.chain .st{color:var(--d);font-size:10px;white-space:nowrap;padding-left:0;min-width:18px}
+.chain .pr{color:var(--t)}
+.chain .pr.no{color:var(--r);text-decoration:line-through;text-decoration-color:#5a3030}
+.chain .vl{color:var(--m);font-size:11px}
+
+.bands{width:100%;border-collapse:collapse;margin-top:2px}
+.bands th{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--d);
+          font-weight:400;padding:3px 5px;text-align:left;border-bottom:1px solid var(--b)}
+.bands td{padding:3px 5px;border-bottom:1px solid #181818;font-size:11px}
+.bands tr:last-child td{border-bottom:none}
+.bands td:first-child{color:var(--m)}
+</style>
+</head>
+<body>
+
+<div class="pages">
+  <button class="pg active" data-page="p1">workflow</button>
+  <button class="pg" data-page="p2">chain</button>
+</div>
+
+<!-- ═══ PAGE 1 ═══ -->
+<div class="page active" id="p1">
+
+  <div class="acc">
+    <button class="acc-head" data-acc="mix">Mixing Process <span class="arr">▶</span></button>
+    <div class="acc-body" id="mix">
+      <ol>
+        <li><span class="n">1</span>Freeze wild things (Libraries &amp; SFX)</li>
+        <li><span class="n">2</span>Organisation — Label, Colors &amp; Buses</li>
+        <li><span class="n">3</span>Balance &amp; Automation</li>
+        <li><span class="n">4</span>Panning</li>
+        <li><span class="n">5</span>Mixing Chain &amp; Reverb, (Nova) Sidechain and Timings</li>
+        <li><span class="n">6</span>Buses Mixing Chain</li>
+        <li><span class="n">7</span>Freezing — keep normal reverbs</li>
+        <li><span class="n">8</span>Reference</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head" data-acc="master">Mastering Process <span class="arr">▶</span></button>
+    <div class="acc-body" id="master">
+      <ol>
+        <li><span class="n">1</span>Render &amp; Organize</li>
+        <li><span class="n">2</span>Mastering Chain</li>
+        <li><span class="n">3</span>Reference</li>
+        <li><span class="n">4</span>Render (w/ Oversampling) &amp; step away → 48khz/24bit &amp; 44.1khz/16bit w/ dither</li>
+        <li><span class="n">5</span>Meta — Key + Tuning + BPM</li>
+        <li><span class="n">6</span>Back-Up</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head" data-acc="finish">Finishing — Perfectionism <span class="arr">▶</span></button>
+    <div class="acc-body" id="finish">
+      <ol>
+        <li><span class="n">1</span><em>Perfection lies in purity, not in addition</em></li>
+        <li><span class="n">2</span>Finish the process</li>
+        <li><span class="n">3</span>Step away for a couple of days</li>
+        <li><span class="n">4</span>Listen freshly — pinch of salt or not?</li>
+        <li><span class="n">5</span>Refine if necessary</li>
+        <li><span class="n">6</span>Done</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head" data-acc="ref">Reference Monitors <span class="arr">▶</span></button>
+    <div class="acc-body" id="ref">
+      <ol>
+        <li><span class="n">1</span>Low on KRK</li>
+        <li><span class="n">2</span>Mono</li>
+        <li><span class="n">3</span>JBL Control 1</li>
+        <li><span class="n">4</span>×70</li>
+        <li><span class="n">5</span>Noise Cancelling Headphones</li>
+        <li><span class="n">6</span>Back to normal KRK</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head" data-acc="tgt">Final Targets <span class="arr">▶</span></button>
+    <div class="acc-body" id="tgt">
+      <div class="targets">
+        <div class="trow"><span class="tk">LUFS-I</span><span class="tv">–12 to –16.5</span></div>
+        <div class="trow"><span class="tk">LRA</span><span class="tv">5–16 LU</span></div>
+        <div class="trow"><span class="tk">Limiter GR</span><span class="tv">0.5–2 dB</span></div>
+        <div class="trow"><span class="tk">True Peak</span><span class="tv">≤ –1.0 dBTP</span></div>
+      </div>
+      <div class="note">Lower LUFS → more clipping · Lower LU → more compression</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ PAGE 2 ═══ -->
+<div class="page" id="p2">
+
+  <div class="acc">
+    <button class="acc-head" data-acc="buses">Bus GR Targets <span class="arr">▶</span></button>
+    <div class="acc-body" id="buses">
+      <div class="buses">
+        <div class="bc">
+          <div class="bh">Drum Bus</div>
+          <div class="brow"><span class="bk">Comp</span><span class="bv">1.5–2.0 dB</span></div>
+          <div class="brow"><span class="bk">Clip</span><span class="bv g">1.3–1.8 dB</span></div>
+        </div>
+        <div class="bc">
+          <div class="bh">Mix Bus</div>
+          <div class="brow"><span class="bk">Comp</span><span class="bv">0.6–0.9 dB</span></div>
+          <div class="brow"><span class="bk">Clip</span><span class="bv r">0 dB — never</span></div>
+        </div>
+        <div class="bc">
+          <div class="bh">Master</div>
+          <div class="brow"><span class="bk">Clip</span><span class="bv">0.5–0.7 dB</span></div>
+          <div class="brow"><span class="bk">Comp</span><span class="bv r">0 dB — never</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head" data-acc="clip">Clipping Rule <span class="arr">▶</span></button>
+    <div class="acc-body" id="clip">
+      <div class="clip-rules">
+        <div class="cr"><span class="cr-c">Long spike</span><span class="cr-a">→ clip it</span></div>
+        <div class="cr"><span class="cr-c">Short micro needle</span><span class="cr-a">→ clip less</span></div>
+        <div class="cr"><span class="cr-c">Big chunk flattening</span><span class="cr-a">→ clipped too much</span></div>
+      </div>
+      <div class="note">Shave just the very tip — not the meat.</div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head" data-acc="insert">Insert Chain <span class="arr">▶</span></button>
+    <div class="acc-body" id="insert">
+      <table class="chain">
+        <tr><td class="st">1</td><td class="pr">Pro-Q3 (surgical)</td><td class="vl">HP/LP, minor cuts · subtractive only</td></tr>
+        <tr><td class="st">2</td><td class="pr">Soothe2</td><td class="vl">~1 dB @ 70% wet · not on FX insert</td></tr>
+        <tr><td class="st">3</td><td class="pr">Upward Comp (Pro-MB)</td><td class="vl">1.7:1 · knee 9 dB · LA 2 ms · atk 15% · rel 37% · link 63% · 50% mix · not on FX insert</td></tr>
+        <tr><td class="st">4</td><td class="pr">Stereo Imaging</td><td class="vl">0 / +5% / +10% / +15% · mono &lt;150 Hz</td></tr>
+        <tr><td class="st">5</td><td class="pr">Saturn 2</td><td class="vl">5–20% drive · Tube · 100% wet</td></tr>
+        <tr><td class="st">6</td><td class="pr">Oxford Inflator (opt)</td><td class="vl">~10% mix</td></tr>
+        <tr><td class="st">7</td><td class="pr">Pro-Q3 (sweetening)</td><td class="vl">tiny shelves — transparent</td></tr>
+        <tr><td class="st">8</td><td class="pr">StandardCLIP</td><td class="vl">0.1–0.3 dB · not on FX insert</td></tr>
+        <tr><td class="st">✕</td><td class="pr no">Limiter / MB / Comp</td><td class="vl">not on inserts</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head" data-acc="bus">Bus Chain <span class="arr">▶</span></button>
+    <div class="acc-body" id="bus">
+      <table class="chain">
+        <tr><td class="st">1</td><td class="pr">Pro-Q3</td><td class="vl">cleanup · no MusEQ unless needed</td></tr>
+        <tr><td class="st">2</td><td class="pr">Glue Comp / Elysia / Pro-C2</td><td class="vl">1.5–2:1 · atk 20–50 ms · rel 100–180 ms · GR 1–2 dB · 100% wet · not on FX bus</td></tr>
+        <tr><td class="st">3</td><td class="pr">Pro-MB (if needed)</td><td class="vl">0.5–1 dB/band · atk 20–35 ms · rel 120–200 ms</td></tr>
+        <tr><td class="st">4</td><td class="pr">Stereo Imaging</td><td class="vl">0 / +2% / +3% / +4%</td></tr>
+        <tr><td class="st">5</td><td class="pr">Pro-Q3</td><td class="vl">tiny shelves / cleanup</td></tr>
+        <tr><td class="st">6</td><td class="pr">StandardCLIP</td><td class="vl">drums only: 1.3–1.8 dB · no clip elsewhere</td></tr>
+        <tr><td class="st">✕</td><td class="pr no">Saturn</td><td class="vl">smears phase, kills transient glue</td></tr>
+        <tr><td class="st">✕</td><td class="pr no">Upward comp / Limiter</td><td class="vl">not on buses</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head" data-acc="mchain">Master Chain <span class="arr">▶</span></button>
+    <div class="acc-body" id="mchain">
+      <table class="chain">
+        <tr><td class="st">1</td><td class="pr">Pro-Q3</td><td class="vl">surgical · rumbles, resonances</td></tr>
+        <tr><td class="st">2</td><td class="pr">Tone EQ (BAX / MusEQ)</td><td class="vl">±0.5–1 dB shelves · one, not both</td></tr>
+        <tr><td class="st">3</td><td class="pr">Kotelnikov GE (opt)</td><td class="vl">1.3:1 · atk 40–60 ms · peak rel 200–300 · RMS rel 300–400 · GR ~1 dB · LF relax 100 Hz · sens 30–40% · 100% wet</td></tr>
+        <tr><td class="st">4</td><td class="pr">Pro-MB</td><td class="vl">contour shaping → see bands below</td></tr>
+        <tr><td class="st">5</td><td class="pr">Stereo Imaging</td><td class="vl">0 / +1% / +2% / +3%</td></tr>
+        <tr><td class="st">6</td><td class="pr">Ozone 9 Vintage Tape</td><td class="vl">30 IPS · light drive · bias –3 · harmonics 2–3</td></tr>
+        <tr><td class="st">7</td><td class="pr">Pro-Q3</td><td class="vl">air shelf · tiny cut post-tape</td></tr>
+        <tr><td class="st">8</td><td class="pr">StandardCLIP</td><td class="vl">0.5–0.7 dB</td></tr>
+        <tr><td class="st">9</td><td class="pr">Pro-L2</td><td class="vl">Transparent/Modern · atk 15–30 ms · rel 250–400 ms · LA 4–5 ms · TP ON · ceil –1.0 dBTP · OS 8× · GR 1.0–1.8 dB</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head" data-acc="mb">Pro-MB Master Bands <span class="arr">▶</span></button>
+    <div class="acc-body" id="mb">
+      <table class="bands">
+        <thead>
+          <tr><th>Band</th><th>Hz</th><th>Ratio</th><th>Attack</th><th>Release</th><th>GR</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Sub</td><td>20–100</td><td>1.5:1</td><td>15–25 ms</td><td>200–250 ms</td><td>0.5–1 dB</td></tr>
+          <tr><td>Low-Mid</td><td>100–400</td><td>1.5:1</td><td>20–30 ms</td><td>180–220 ms</td><td>0.5–1.5 dB</td></tr>
+          <tr><td>High-Mid</td><td>400–2k</td><td>1.4:1</td><td>25–40 ms</td><td>160–200 ms</td><td>0.5–1 dB</td></tr>
+          <tr><td>Highs</td><td>2k–20k</td><td>1.3–1.4:1</td><td>30–50 ms</td><td>150–180 ms</td><td>≤0.5 dB</td></tr>
+        </tbody>
+      </table>
+      <div class="note">LA 4–5 ms · link ~90% · mix 100% · knee soft 9–12 dB · GR total ≤2 dB</div>
+    </div>
+  </div>
+
+  <div class="acc">
+    <button class="acc-head" data-acc="creative">Creative (Optional) <span class="arr">▶</span></button>
+    <div class="acc-body" id="creative">
+      <ul>
+        <li><span class="no">·</span>Ozone Exciter — instrument bus &amp; drum bus</li>
+        <li><span class="no">·</span>Bettermaker — drum bus &amp; instrument bus</li>
+        <li><span class="no">·</span>Drawmer</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<script>
+document.querySelectorAll('.pg').forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll('.pg').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.page).classList.add('active');
+  };
+});
+document.querySelectorAll('.acc-head').forEach(head => {
+  head.onclick = () => {
+    const body = document.getElementById(head.dataset.acc);
+    const open = body.classList.contains('open');
+    body.classList.toggle('open', !open);
+    head.classList.toggle('open', !open);
+  };
+});
+</script>
+</body>
+</html>
